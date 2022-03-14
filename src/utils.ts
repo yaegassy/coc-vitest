@@ -1,5 +1,5 @@
 import { LinesTextDocument, Position, Uri } from 'coc.nvim';
-import parse from 'jest-editor-support/build/parsers';
+import { parse } from './parser';
 
 export function isSupportLang(languageId: string) {
   if (['javascript', 'typescript', 'javascriptreact', 'typescriptreact'].includes(languageId)) {
