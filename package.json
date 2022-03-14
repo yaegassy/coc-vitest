@@ -1,0 +1,91 @@
+{
+  "name": "@yaegassy/coc-vitest",
+  "version": "0.1.0",
+  "description": "Vitest for coc.nvim",
+  "author": "yaegassy <yosstools@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "coc.nvim"
+  ],
+  "engines": {
+    "coc": "^0.0.80"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaegassy/coc-vitest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint src --ext ts",
+    "clean": "rimraf lib",
+    "watch": "node esbuild.js --watch",
+    "build": "node esbuild.js",
+    "prepare": "node esbuild.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "semi": true
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "coc.nvim": "^0.0.81-next.22",
+    "esbuild": "^0.14.25",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.2"
+  },
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:javascript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "coc-vitest configuration",
+      "properties": {
+        "vitest.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-vitest extension."
+        },
+        "vitest.codelens.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable codelens."
+        },
+        "vitest.codelens.title": {
+          "type": "string",
+          "default": ">> [Run Vitest]",
+          "description": "CodeLens title. Can be changed to any display."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "vitest.projectTest",
+        "title": "Run Vitest for current project"
+      },
+      {
+        "command": "vitest.fileTest",
+        "title": "Run Vitest for current file"
+      },
+      {
+        "command": "vitest.singleTest",
+        "title": "Run Vitest for single (nearest) test"
+      }
+    ]
+  },
+  "dependencies": {
+    "jest-editor-support": "^30.0.2"
+  }
+}
