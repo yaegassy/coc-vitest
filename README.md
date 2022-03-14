@@ -2,6 +2,8 @@
 
 [Vitest](https://github.com/vitest-dev/vitest) for [coc.nvim](https://github.com/neoclide/coc.nvim)
 
+![coc-vitest-demo](https://user-images.githubusercontent.com/188642/158115056-55710c75-cf08-4eb0-82a1-3c1337b16b99.gif)
+
 ## Install
 
 **vim-plug**:
