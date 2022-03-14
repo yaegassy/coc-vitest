@@ -6,7 +6,14 @@
   "license": "MIT",
   "main": "lib/index.js",
   "keywords": [
-    "coc.nvim"
+    "coc.nvim",
+    "vitest",
+    "typescript",
+    "javascript",
+    "typescriptreact",
+    "javascriptreact",
+    "vim",
+    "neovim"
   ],
   "engines": {
     "coc": "^0.0.80"
