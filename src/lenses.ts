@@ -1,4 +1,13 @@
-import { CancellationToken, CodeLens, CodeLensProvider, LinesTextDocument, Position, Range, Uri } from 'coc.nvim';
+import {
+  CancellationToken,
+  CodeLens,
+  CodeLensProvider,
+  events,
+  LinesTextDocument,
+  Position,
+  Range,
+  Uri,
+} from 'coc.nvim';
 import { getConfigVitestCodeLensTitle } from './config';
 import { parse, ParsedNode } from './parser';
 import { isTestFile } from './utils';
@@ -11,6 +20,9 @@ export class VitestCodeLensProvider implements CodeLensProvider {
     if (!isTestFile(filePath)) return [];
 
     const codeLenses: CodeLens[] = [];
+
+    // do not process codelens when in insert mode
+    if (events.insertMode) return codeLenses;
 
     try {
       const text = document.getText();
