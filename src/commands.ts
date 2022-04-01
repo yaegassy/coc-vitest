@@ -25,6 +25,9 @@ async function runVitest(filePath?: string, testName?: string) {
 
   if (vitestBin) {
     if (terminal) {
+      if (terminal.bufnr) {
+        await workspace.nvim.command(`bd! ${terminal.bufnr}`);
+      }
       terminal.dispose();
       terminal = undefined;
     }
