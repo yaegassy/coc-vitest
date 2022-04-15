@@ -19,6 +19,7 @@ Not supported at this time.
 ## Configuration options
 
 - `vitest.enable`: Enable coc-vitest extension, default: `true`
+- `vitest.terminal.enableSplitRight`: Use vertical belowright for vitest terminal window, default: `false`
 - `vitest.codelens.enable`: Enable codelens, default: `true`
 - `vitest.codelens.title`: CodeLens title. Can be changed to any display, default: `">> [Run Vitest]"`
 

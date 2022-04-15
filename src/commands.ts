@@ -1,6 +1,7 @@
 import { Terminal, Uri, window, workspace } from 'coc.nvim';
 import fs from 'fs';
 import path from 'path';
+import { getConfigVitestTerminalEnableSplitRight } from './config';
 import { findCurrentTestName, isSupportLang } from './utils';
 
 const NOT_TEST_FILE_MESSAGE = 'This file is not a test file!';
@@ -50,7 +51,10 @@ async function runVitest(filePath?: string, testName?: string) {
 
     terminal.sendText(`${vitestBin} ${args.join(' ')}`);
 
+    const enableSplitRight = getConfigVitestTerminalEnableSplitRight();
+    if (enableSplitRight) terminal.hide();
     await workspace.nvim.command('stopinsert');
+    if (enableSplitRight) await workspace.nvim.command(`vert bel sb ${terminal.bufnr}`);
   } else {
     return window.showErrorMessage('vitest not found!');
   }

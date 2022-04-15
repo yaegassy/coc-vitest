@@ -65,6 +65,11 @@
           "default": true,
           "description": "Enable coc-vitest extension."
         },
+        "vitest.terminal.enableSplitRight": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use vertical belowright for vitest terminal window."
+        },
         "vitest.codelens.enable": {
           "type": "boolean",
           "default": true,
