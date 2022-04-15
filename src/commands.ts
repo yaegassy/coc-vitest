@@ -6,7 +6,7 @@ import { findCurrentTestName, isSupportLang } from './utils';
 const NOT_TEST_FILE_MESSAGE = 'This file is not a test file!';
 let terminal: Terminal | undefined;
 
-function getVitestPath() {
+export function getVitestPath() {
   let cmdPath = '';
   const vitestPath = workspace.getConfiguration('vitest').get<string>('path');
   const localVitestPath = path.join(workspace.root, 'node_modules', '.bin', 'vitest');
