@@ -20,10 +20,6 @@
 Plug 'yaegassy/coc-vitest', {'do': 'yarn install --frozen-lockfile'}
 ```
 
-**CocInstall**:
-
-Not supported at this time.
-
 ## Configuration options
 
 - `vitest.enable`: Enable coc-vitest extension, default: `true`
