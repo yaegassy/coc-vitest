@@ -31,7 +31,7 @@ export function findFullTestName(selectedLine: number, children: any[]): string 
     const result = findFullTestName(selectedLine, element.children);
 
     if (result) {
-      return resolveTestNameStringInterpolation(element.name) + ' ' + result;
+      return resolveTestNameStringInterpolation(result);
     }
   }
 }
