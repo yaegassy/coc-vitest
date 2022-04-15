@@ -65,15 +65,16 @@ function getTestsBlocks(parsedNode: ParsedNode, parseResults: ParsedNode[]): Cod
 
   const codeLensTitle = getConfigVitestCodeLensTitle();
 
-  const lens: CodeLens = {
-    range,
-    command: {
-      title: codeLensTitle,
-      command: 'vitest.singleTest',
-    },
-  };
-
-  codeLenses.push(lens);
+  if (parsedNode.type !== 'describe') {
+    const lens: CodeLens = {
+      range,
+      command: {
+        title: codeLensTitle,
+        command: 'vitest.singleTest',
+      },
+    };
+    codeLenses.push(lens);
+  }
 
   return codeLenses;
 }
