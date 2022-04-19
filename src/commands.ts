@@ -51,7 +51,10 @@ async function runVitest(filePath?: string, testName?: string) {
     const enableSplitRight = getConfigVitestTerminalEnableSplitRight();
     if (enableSplitRight) terminal.hide();
     await workspace.nvim.command('stopinsert');
-    if (enableSplitRight) await workspace.nvim.command(`vert bel sb ${terminal.bufnr}`);
+    if (enableSplitRight) {
+      await workspace.nvim.command(`vert bel sb ${terminal.bufnr}`);
+      await workspace.nvim.command(`wincmd p`);
+    }
   } else {
     return window.showErrorMessage('vitest not found!');
   }
