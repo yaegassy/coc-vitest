@@ -36,17 +36,14 @@ async function runVitest(filePath?: string, testName?: string) {
     terminal = await window.createTerminal({ name: 'vitest', cwd: workspace.root });
 
     const args: string[] = [];
+    args.push('run');
 
     if (testName && filePath) {
-      args.push('run');
       args.push('--testNamePattern');
       args.push(`'${testName}'`);
       args.push(`${filePath}`);
     } else if (filePath) {
-      args.push('run');
       args.push(`${filePath}`);
-    } else {
-      args.push('run');
     }
 
     terminal.sendText(`${vitestBin} ${args.join(' ')}`);
