@@ -9,7 +9,7 @@ export function isSupportLang(languageId: string) {
 }
 
 export function isTestFile(filePath: string) {
-  if (filePath.match(/.*\.(test|spec)\.(ts|js|tsx|jsx)$/)) {
+  if (filePath.match(/.*\.(test|spec)\.(ts|js|mts|cts|mjs|cjs|tsx|jsx)$/)) {
     return true;
   }
   return false;
