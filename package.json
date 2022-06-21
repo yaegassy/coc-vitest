@@ -1,6 +1,6 @@
 {
   "name": "@yaegassy/coc-vitest",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Vitest for coc.nvim",
   "author": "yaegassy <yosstools@gmail.com>",
   "license": "MIT",
