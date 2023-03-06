@@ -14,7 +14,7 @@ import { isTestFile } from './utils';
 
 export class VitestCodeLensProvider implements CodeLensProvider {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async provideCodeLenses(document: LinesTextDocument, token: CancellationToken) {
+  async provideCodeLenses(document: LinesTextDocument, _token: CancellationToken) {
     const filePath = Uri.parse(document.uri).fsPath;
 
     if (!isTestFile(filePath)) return [];
