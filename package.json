@@ -98,6 +98,6 @@
     ]
   },
   "dependencies": {
-    "jest-editor-support": "^30.1.0"
+    "jest-editor-support": "^31.0.1"
   }
 }
