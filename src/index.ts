@@ -1,6 +1,6 @@
 import { commands, ExtensionContext, languages } from 'coc.nvim';
-import { getConfigVitestCodeLensEnable, getConfigVitestEnable } from './config';
 import { fileTestCommand, getVitestPath, projectTestCommand, singleTestCommand } from './commands';
+import { getConfigVitestCodeLensEnable, getConfigVitestEnable } from './config';
 import { VitestCodeLensProvider } from './lenses';
 
 export async function activate(context: ExtensionContext): Promise<void> {
