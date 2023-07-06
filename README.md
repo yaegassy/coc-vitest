@@ -26,6 +26,7 @@ Plug 'yaegassy/coc-vitest', {'do': 'yarn install --frozen-lockfile'}
 - `vitest.terminal.enableSplitRight`: Use vertical belowright for vitest terminal window, default: `false`
 - `vitest.codelens.enable`: Enable codelens, default: `true`
 - `vitest.codelens.title`: CodeLens title. Can be changed to any display, default: `">> [Run Vitest]"`
+- `vitest.watch`: Run tests in watch mode, default: `false`
 
 ## Commands
 

@@ -13,5 +13,9 @@ export function getConfigVitestCodeLensEnable() {
 }
 
 export function getConfigVitestCodeLensTitle() {
-  return workspace.getConfiguration('vitest').get('codelens.title', '>> [RUN Vitest]');
+  return workspace.getConfiguration('vitest').get<string>('codelens.title', '>> [RUN Vitest]');
+}
+
+export function getConfigVitestWatchMode() {
+  return workspace.getConfiguration('vitest').get<boolean>('watch', false);
 }
