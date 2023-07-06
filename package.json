@@ -79,6 +79,11 @@
           "type": "string",
           "default": ">> [Run Vitest]",
           "description": "CodeLens title. Can be changed to any display."
+        },
+        "vitest.watch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run tests in watch mode"
         }
       }
     },
