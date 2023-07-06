@@ -103,6 +103,7 @@
     ]
   },
   "dependencies": {
+    "@types/node": "^18.16.19",
     "jest-editor-support": "^31.0.1"
   }
 }
