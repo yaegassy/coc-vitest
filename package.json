@@ -5,6 +5,10 @@
   "author": "yaegassy <yosstools@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "README.md"
+  ],
   "keywords": [
     "coc.nvim",
     "vitest",
@@ -26,28 +30,24 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "eslint src --ext ts",
-    "clean": "rimraf lib",
-    "watch": "node esbuild.js --watch",
-    "build": "node esbuild.js",
-    "prepare": "node esbuild.js"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120,
-    "semi": true
+    "watch": "rolldown -c --watch",
+    "build": "rolldown -c",
+    "prepare": "rolldown -c",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint src/",
+    "lint:fix": "biome lint --write src/",
+    "format": "biome format src/",
+    "format:fix": "biome format --write src/",
+    "check": "biome check src/",
+    "check:fix": "biome check --write src/"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "coc.nvim": "^0.0.82",
-    "esbuild": "^0.16.17",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "rimraf": "^3.0.2",
-    "typescript": "~5.0.4"
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^20.19.43",
+    "coc.nvim": "0.0.83-next.27",
+    "jest-editor-support": "^31.1.2",
+    "rolldown": "^1.2.13",
+    "typescript": "~7.0.2"
   },
   "activationEvents": [
     "onLanguage:typescript",
@@ -101,9 +101,5 @@
         "title": "Run Vitest for single (nearest) test"
       }
     ]
-  },
-  "dependencies": {
-    "@types/node": "^18.16.19",
-    "jest-editor-support": "^31.0.1"
   }
 }
