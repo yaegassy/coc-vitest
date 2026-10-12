@@ -15,6 +15,7 @@ export function isTestFile(filePath: string) {
   return false;
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: will be typed in the Vitest 5 full-name fix
 export function findFullTestName(selectedLine: number, children: any[]): string | undefined {
   if (!children) {
     return;
