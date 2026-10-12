@@ -55,3 +55,8 @@ export function escapeRegExp(s: string): string {
   const escapedString = s.replace(/[.*+?^${}<>()|[\]\\]/g, "\\$&"); // $& means the whole matched string
   return escapedString.replace(/\\\(\\\.\\\*\\\?\\\)/g, "(.*?)");
 }
+
+// Quote for POSIX shells: wrap in single quotes and replace ' with '\''
+export function shellQuote(s: string): string {
+  return `'${s.replace(/'/g, `'\\''`)}'`;
+}

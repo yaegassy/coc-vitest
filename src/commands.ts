@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { type Terminal, Uri, window, workspace } from "coc.nvim";
 import { getConfigVitestTerminalEnableSplitRight, getConfigVitestWatchMode } from "./config";
-import { findCurrentTestName, isSupportLang } from "./utils";
+import { findCurrentTestName, isSupportLang, shellQuote } from "./utils";
 
 const NOT_TEST_FILE_MESSAGE = "This file is not a test file!";
 let terminal: Terminal | undefined;
@@ -42,13 +42,13 @@ async function runVitest(filePath?: string, testName?: string) {
 
     if (testName && filePath) {
       args.push("--testNamePattern");
-      args.push(`'${testName}'`);
-      args.push(`${filePath}`);
+      args.push(shellQuote(testName));
+      args.push(shellQuote(filePath));
     } else if (filePath) {
-      args.push(`${filePath}`);
+      args.push(shellQuote(filePath));
     }
 
-    terminal.sendText(`${vitestBin} ${args.join(" ")}`);
+    terminal.sendText(`${shellQuote(vitestBin)} ${args.join(" ")}`);
 
     const enableSplitRight = getConfigVitestTerminalEnableSplitRight();
     if (enableSplitRight) terminal.hide();
