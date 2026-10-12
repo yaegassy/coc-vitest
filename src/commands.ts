@@ -1,6 +1,6 @@
-import { Terminal, Uri, window, workspace } from "coc.nvim";
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
+import { type Terminal, Uri, window, workspace } from "coc.nvim";
 import { getConfigVitestTerminalEnableSplitRight, getConfigVitestWatchMode } from "./config";
 import { findCurrentTestName, isSupportLang } from "./utils";
 

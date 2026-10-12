@@ -1,19 +1,18 @@
 import {
-  CancellationToken,
-  CodeLens,
-  CodeLensProvider,
+  type CancellationToken,
+  type CodeLens,
+  type CodeLensProvider,
   events,
-  LinesTextDocument,
+  type LinesTextDocument,
   Position,
   Range,
   Uri,
 } from "coc.nvim";
 import { getConfigVitestCodeLensTitle } from "./config";
-import { parse, ParsedNode } from "./parser";
+import { type ParsedNode, parse } from "./parser";
 import { isTestFile } from "./utils";
 
 export class VitestCodeLensProvider implements CodeLensProvider {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async provideCodeLenses(document: LinesTextDocument, _token: CancellationToken) {
     const filePath = Uri.parse(document.uri).fsPath;
 
@@ -28,7 +27,9 @@ export class VitestCodeLensProvider implements CodeLensProvider {
       const text = document.getText();
       const parseResults = parse(filePath, text).root.children;
 
-      parseResults.forEach((parseResult: ParsedNode) => codeLenses.push(...getTestsBlocks(parseResult, parseResults)));
+      for (const parseResult of parseResults) {
+        codeLenses.push(...getTestsBlocks(parseResult, parseResults));
+      }
     } catch {
       // noop
     }

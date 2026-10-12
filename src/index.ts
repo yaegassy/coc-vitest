@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, languages } from "coc.nvim";
+import { commands, type ExtensionContext, languages } from "coc.nvim";
 import { fileTestCommand, getVitestPath, projectTestCommand, singleTestCommand } from "./commands";
 import { getConfigVitestCodeLensEnable, getConfigVitestEnable } from "./config";
 import { VitestCodeLensProvider } from "./lenses";

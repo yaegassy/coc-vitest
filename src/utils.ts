@@ -1,4 +1,4 @@
-import { LinesTextDocument, Position, Uri } from "coc.nvim";
+import { type LinesTextDocument, type Position, Uri } from "coc.nvim";
 import { parse } from "./parser";
 
 export function isSupportLang(languageId: string) {
