@@ -1,8 +1,8 @@
-import { LinesTextDocument, Position, Uri } from 'coc.nvim';
-import { parse } from './parser';
+import { LinesTextDocument, Position, Uri } from "coc.nvim";
+import { parse } from "./parser";
 
 export function isSupportLang(languageId: string) {
-  if (['javascript', 'typescript', 'javascriptreact', 'typescriptreact'].includes(languageId)) {
+  if (["javascript", "typescript", "javascriptreact", "typescriptreact"].includes(languageId)) {
     return true;
   }
   return false;
@@ -20,10 +20,10 @@ export function findFullTestName(selectedLine: number, children: any[]): string 
     return;
   }
   for (const element of children) {
-    if (element.type === 'describe' && selectedLine === element.start.line) {
+    if (element.type === "describe" && selectedLine === element.start.line) {
       return resolveTestNameStringInterpolation(element.name);
     }
-    if (element.type !== 'describe' && selectedLine >= element.start.line && selectedLine <= element.end.line) {
+    if (element.type !== "describe" && selectedLine >= element.start.line && selectedLine <= element.end.line) {
       return resolveTestNameStringInterpolation(element.name);
     }
   }
@@ -46,11 +46,11 @@ export function findCurrentTestName(document: LinesTextDocument, position: Posit
 
 export function resolveTestNameStringInterpolation(s: string): string {
   const variableRegex = /(\${?[A-Za-z0-9_]+}?|%[psdifjo#%])/gi;
-  const matchAny = '(.*?)';
+  const matchAny = "(.*?)";
   return s.replace(variableRegex, matchAny);
 }
 
 export function escapeRegExp(s: string): string {
-  const escapedString = s.replace(/[.*+?^${}<>()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-  return escapedString.replace(/\\\(\\\.\\\*\\\?\\\)/g, '(.*?)');
+  const escapedString = s.replace(/[.*+?^${}<>()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+  return escapedString.replace(/\\\(\\\.\\\*\\\?\\\)/g, "(.*?)");
 }

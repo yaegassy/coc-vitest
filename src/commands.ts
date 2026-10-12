@@ -1,21 +1,21 @@
-import { Terminal, Uri, window, workspace } from 'coc.nvim';
-import fs from 'fs';
-import path from 'path';
-import { getConfigVitestTerminalEnableSplitRight, getConfigVitestWatchMode } from './config';
-import { findCurrentTestName, isSupportLang } from './utils';
+import { Terminal, Uri, window, workspace } from "coc.nvim";
+import fs from "fs";
+import path from "path";
+import { getConfigVitestTerminalEnableSplitRight, getConfigVitestWatchMode } from "./config";
+import { findCurrentTestName, isSupportLang } from "./utils";
 
-const NOT_TEST_FILE_MESSAGE = 'This file is not a test file!';
+const NOT_TEST_FILE_MESSAGE = "This file is not a test file!";
 let terminal: Terminal | undefined;
 
 export function getVitestPath() {
-  let cmdPath = '';
-  const vitestPath = workspace.getConfiguration('vitest').get<string>('path');
-  const localVitestPath = path.join(workspace.root, 'node_modules', '.bin', 'vitest');
+  let cmdPath = "";
+  const vitestPath = workspace.getConfiguration("vitest").get<string>("path");
+  const localVitestPath = path.join(workspace.root, "node_modules", ".bin", "vitest");
 
   if (vitestPath && fs.existsSync(vitestPath)) {
     cmdPath = vitestPath;
   } else if (fs.existsSync(localVitestPath)) {
-    cmdPath = path.join(workspace.root, 'node_modules', '.bin', 'vitest');
+    cmdPath = path.join(workspace.root, "node_modules", ".bin", "vitest");
   }
 
   return cmdPath;
@@ -33,32 +33,32 @@ async function runVitest(filePath?: string, testName?: string) {
       terminal = undefined;
     }
 
-    terminal = await window.createTerminal({ name: 'vitest', cwd: workspace.root });
+    terminal = await window.createTerminal({ name: "vitest", cwd: workspace.root });
 
     const args: string[] = [];
     if (!getConfigVitestWatchMode()) {
-      args.push('run');
+      args.push("run");
     }
 
     if (testName && filePath) {
-      args.push('--testNamePattern');
+      args.push("--testNamePattern");
       args.push(`'${testName}'`);
       args.push(`${filePath}`);
     } else if (filePath) {
       args.push(`${filePath}`);
     }
 
-    terminal.sendText(`${vitestBin} ${args.join(' ')}`);
+    terminal.sendText(`${vitestBin} ${args.join(" ")}`);
 
     const enableSplitRight = getConfigVitestTerminalEnableSplitRight();
     if (enableSplitRight) terminal.hide();
-    await workspace.nvim.command('stopinsert');
+    await workspace.nvim.command("stopinsert");
     if (enableSplitRight) {
       await workspace.nvim.command(`vert bel sb ${terminal.bufnr}`);
       await workspace.nvim.command(`wincmd p`);
     }
   } else {
-    return window.showErrorMessage('vitest not found!');
+    return window.showErrorMessage("vitest not found!");
   }
 }
 

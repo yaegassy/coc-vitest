@@ -7,10 +7,10 @@ import {
   Position,
   Range,
   Uri,
-} from 'coc.nvim';
-import { getConfigVitestCodeLensTitle } from './config';
-import { parse, ParsedNode } from './parser';
-import { isTestFile } from './utils';
+} from "coc.nvim";
+import { getConfigVitestCodeLensTitle } from "./config";
+import { parse, ParsedNode } from "./parser";
+import { isTestFile } from "./utils";
 
 export class VitestCodeLensProvider implements CodeLensProvider {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -58,19 +58,19 @@ function getTestsBlocks(parsedNode: ParsedNode, parseResults: ParsedNode[]): Cod
     parsedNode.start.line - 1,
     parsedNode.start.column,
     parsedNode.end.line - 1,
-    parsedNode.end.column
+    parsedNode.end.column,
   );
 
-  if (parsedNode.type === 'expect') return [];
+  if (parsedNode.type === "expect") return [];
 
   const codeLensTitle = getConfigVitestCodeLensTitle();
 
-  if (parsedNode.type !== 'describe') {
+  if (parsedNode.type !== "describe") {
     const lens: CodeLens = {
       range,
       command: {
         title: codeLensTitle,
-        command: 'vitest.singleTest',
+        command: "vitest.singleTest",
       },
     };
     codeLenses.push(lens);
