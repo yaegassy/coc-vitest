@@ -17,7 +17,7 @@
 **vim-plug**:
 
 ```vim
-Plug 'yaegassy/coc-vitest', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-vitest', {'do': 'pnpm install'}
 ```
 
 ## Configuration options
